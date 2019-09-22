@@ -8,10 +8,9 @@ import java.util.ArrayList;
  *
  */
 
-public class ReceiptPrinter {
-	
-	ArrayList<Item> items;
-	private int infoLineTabs = 6;
+public class ReceiptPrinter {	
+	final ArrayList<Item> items;
+	private final int infoLineTabs = 6;
 	
 	/**
 	 * 
@@ -79,7 +78,8 @@ public class ReceiptPrinter {
 	 */
 	public void printReceiptLine(double subtotal) {
 		System.out.printf("Subtotal:\t\t\t\t\t\t\t\t$%.2f\n", subtotal);
-		System.out.printf("6.25 Sales Tax\t\t\t\t\t\t\t\t$%.2f\n", subtotal*0.0625);
+		System.out.print("6.25%");
+		System.out.printf(" Sales Tax\t\t\t\t\t\t\t\t$%.2f\n", subtotal*0.0625);
 		System.out.printf("Total:\t\t\t\t\t\t\t\t\t$%.2f\n", subtotal*1.0625);
 	}
 	

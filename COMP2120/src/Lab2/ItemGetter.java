@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class ItemGetter {
 	
-	Scanner scanner = new Scanner(System.in);
+	final Scanner scanner = new Scanner(System.in);
 	ArrayList<Item> items = new ArrayList<Item>();
 	
 	/**

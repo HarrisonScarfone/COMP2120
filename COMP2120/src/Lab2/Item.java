@@ -6,9 +6,9 @@ package Lab2;
  */
 public class Item {	
 	
-	private String name;
-	private double price;
-	private int quantity;
+	final private String name;
+	final private double price;
+	final private int quantity;
 	
 	/**
 	 * 
