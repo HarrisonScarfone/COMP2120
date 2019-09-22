@@ -12,9 +12,10 @@ public class Item {
 	
 	/**
 	 * 
-	 * @param n 
-	 * @param p
-	 * @param q
+	 * @param n The name of the item.
+	 * @param p The price of the item.
+	 * @param q The quantity of the items being purchased. Only
+	 * allows for whole number purchases.
 	 */
 	public Item(String name, double price, int quantity) {
 		this.name = name;

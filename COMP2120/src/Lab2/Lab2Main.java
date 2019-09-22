@@ -10,6 +10,10 @@ public class Lab2Main {
 	
 	ItemGetter itemGetter = new ItemGetter();
 
+	/**
+	 * 
+	 * @param args Driver function for the Lab 2 program.
+	 */
 	public static void main(String[] args) {
 		Lab2Main lab2Main = new Lab2Main();
 		lab2Main.itemGetter.getItems();

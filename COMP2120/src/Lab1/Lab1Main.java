@@ -11,8 +11,8 @@ public class Lab1Main {
 	public static void main(String[] args) {
 		Lab1Main lab1Main = new Lab1Main();
 		System.out.println(lab1Main.calc(5, 7));
-		System.out.println(lab1Main.wordCap("hElLo"));
-		System.out.println(lab1Main.findKeyWord("This is a test", "test", true));
+		System.out.println(lab1Main.wordCap("hElLoWORLd"));
+		System.out.println(lab1Main.findKeyWord("This is a test", "TeSt", false));
 	}
 	
 	/**
@@ -22,11 +22,11 @@ public class Lab1Main {
 	 * @param y The y value for the equation.
 	 * @return The value calculated as per description.
 	 */
-	public double calc (int x, int y) {
+	private double calc (int x, int y) {
 		try {
 			return Math.pow((Math.PI*(Math.pow(y, 2))), 0.5) / (2*x);
 		}catch(Exception e){
-			System.out.println("Probably divided by 0");
+			System.out.println("must have made a math error");
 		}
 		return 0;
 	}
@@ -37,8 +37,8 @@ public class Lab1Main {
 	 * @param str The string value to be modified.
 	 * @return The modified string.
 	 */
-	public String wordCap(String str) {
-		if(str.length()<1) {
+	private String wordCap(String str) {
+		if(str.isEmpty()) {
 			return "";
 		}else if(str.length()==1) {
 			return str.toUpperCase();
@@ -54,7 +54,7 @@ public class Lab1Main {
 	 * @param caseSensitive If the search should be case sensitive.
 	 * @return Boolean true if kw is found in str.
 	 */
-	public boolean findKeyWord(String str, String kw, boolean caseSensitive) {
+	private boolean findKeyWord(String str, String kw, boolean caseSensitive) {
 		
 		if(str.isEmpty() || kw.isEmpty()) {
 			System.out.println("One of your input lines was blank.");
@@ -65,7 +65,7 @@ public class Lab1Main {
 			return false;
 		}
 		
-		if(caseSensitive) {
+		if(!caseSensitive) {
 			if(str.contains(kw)) {			
 				return true;
 			}
