@@ -6,18 +6,15 @@ package Lab2;
  * @author Harrison Scarfone 104900846
  *
  */
-public class Lab2Main {
+public class CashRegister {
 	
-	ItemGetter itemGetter = new ItemGetter();
-
 	/**
 	 * 
 	 * @param args Driver function for the Lab 2 program.
 	 */
 	public static void main(String[] args) {
-		Lab2Main lab2Main = new Lab2Main();
-		lab2Main.itemGetter.getItems();
-		ReceiptPrinter receiptPrinter = new ReceiptPrinter(lab2Main.itemGetter.items);
-		receiptPrinter.printReceipt();				
+		Invoice invoice = new Invoice();
+		invoice.getItems();
+		invoice.printReceipt();
 	}
 }

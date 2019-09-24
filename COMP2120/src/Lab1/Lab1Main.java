@@ -1,6 +1,6 @@
 package Lab1;
 /**
- * Lab 1 Assignment.  Accomplishes 3 trivial tasks as described 
+ * Lab 1 Assignment.  Accomplishes 3 tasks as described 
  * in the lab handout and this javadoc.
  * @author Harrison Scarfone 104900846
  *
@@ -10,8 +10,16 @@ public class Lab1Main {
 
 	public static void main(String[] args) {
 		System.out.println(calc(5, 7));
+		System.out.print("\n");
 		System.out.println(wordCap("hElLoWORLd"));
+		System.out.println(wordCap("H"));
+		System.out.println(wordCap(""));
 		System.out.println(findKeyWord("This is a test", "TeSt", false));
+		System.out.println(findKeyWord("This is a test", "TeSt", true));
+		System.out.println(findKeyWord("This is a test", "test", false));
+		System.out.println(findKeyWord("", "test", false));
+		System.out.println(findKeyWord("This is a test", "", false));
+		System.out.println(findKeyWord("This is a test", "This is a longer test", false));
 	}
 	
 	/**
@@ -25,7 +33,7 @@ public class Lab1Main {
 		try {
 			return Math.pow((Math.PI*(Math.pow(y, 2))), 0.5) / (2*x);
 		}catch(Exception e){
-			System.out.println("must have made a math error");
+			System.out.println("Unable to calculate");
 		}
 		return 0;
 	}
@@ -56,11 +64,12 @@ public class Lab1Main {
 	private static boolean findKeyWord(String str, String kw, boolean caseSensitive) {
 		
 		if(str.isEmpty() || kw.isEmpty()) {
-			System.out.println("One of your input lines was blank.");
+			System.out.println("One of your input lines was blank. Returning false.");
 			return false;
 		}
 		
 		if(str.length() < kw.length()) {
+			System.out.println("KW longer than str. Returning false.");
 			return false;
 		}
 		
@@ -74,7 +83,7 @@ public class Lab1Main {
 			if(str1.contains(kw1)) {
 				return true;
 			}
-		}
+		}	
 		return false;
 	}	
 }
