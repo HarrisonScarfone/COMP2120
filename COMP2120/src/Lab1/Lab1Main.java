@@ -12,7 +12,7 @@ public class Lab1Main {
 		System.out.println(calc(5, 7));
 		System.out.print("\n");
 		System.out.println(wordCap("hElLoWORLd"));
-		System.out.println(wordCap("H"));
+		System.out.println(wordCap("h"));
 		System.out.println(wordCap(""));
 		System.out.println(findKeyWord("This is a test", "TeSt", false));
 		System.out.println(findKeyWord("This is a test", "TeSt", true));
@@ -35,7 +35,7 @@ public class Lab1Main {
 		}catch(Exception e){
 			System.out.println("Unable to calculate");
 		}
-		return 0;
+		return 0.0;
 	}
 	
 	/**

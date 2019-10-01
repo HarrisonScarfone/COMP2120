@@ -6,9 +6,9 @@ package Lab2;
  */
 public class Item {	
 	
-	final private String name;
-	final private double price;
-	final private int quantity;
+	private final String name;
+	private final double price;
+	private final int quantity;
 	
 	/**
 	 * 
@@ -22,19 +22,31 @@ public class Item {
 		this.quantity = quantity;
 		this.price = price;
 	}
-
+	/**
+	 * 
+	 * @return The name of the item.
+	 */
 	public String getName() {
 		return name;
 	}
-	
+	/**
+	 * 
+	 * @return The quantity of the item.
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
-	
+	/**
+	 * 
+	 * @return The price of the item.
+	 */
 	public double getPrice() {
 		return price;
 	}
-	
+	/**
+	 * 
+	 * @return The total price of the item (price * quantity).
+	 */
 	public double getTotal() {
 		return price*quantity;
 	}
