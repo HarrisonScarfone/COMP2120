@@ -18,8 +18,3 @@ public class CashRegister {
 		invoice.printReceipt();
 	}
 }
-
-
- static void main(String[] args) {
-	
-}

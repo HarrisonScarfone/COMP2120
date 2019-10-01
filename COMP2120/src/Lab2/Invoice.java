@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class Invoice {
 
-	private final int infoLineTabs = 6;
 	private final Scanner scanner = new Scanner(System.in);
 	private final ArrayList<Item> items = new ArrayList<Item>();
+	private int howManyItems;
 
 	/**
 	 * 
@@ -28,12 +28,14 @@ public class Invoice {
 	 * private ArrayList<Item>
 	 */
 	public void getItems() {
-		for (int i = 1; i < 4; i++) {
-			System.out.print("Item name: ");
+		System.out.println("How many items? ");
+		howManyItems = Integer.parseInt(scanner.nextLine());
+		for (int i = 1; i < howManyItems+1; i++) {
+			System.out.printf("Input name of item %d: \n", i);
 			String name = scanner.nextLine();
-			System.out.print("Item quantity: ");
+			System.out.printf("Item Quantity of item %d: \n", i);
 			int quantity = scanner.nextInt();
-			System.out.print("Item price: ");
+			System.out.printf("input price of item %d: \n", i);
 			double price = scanner.nextDouble();
 			scanner.nextLine();
 			Item newItem = new Item(name, price, quantity);
@@ -45,8 +47,8 @@ public class Invoice {
 	 * Prints the receipt.
 	 */
 	public void printReceipt() {
+		System.out.print("\n\n\nYour bill:\n\n");
 		printTitleLine();
-		printSeperatorLine();
 		double subtotal = 0;
 		for (Item item : items) {
 			String name = item.getName();
@@ -56,17 +58,17 @@ public class Invoice {
 			subtotal += total;
 			printInfoLine(name, quantity, price, total);
 		}
-		printSeperatorLine();
+		System.out.println();
 		printReceiptLine(subtotal);
 	}
-
+	
 	/**
-	 * Helper method to print receipt section seperator.
+	 * Prints an information line in the receipt.
+	 * @param name Name of the item to be printed. 
+	 * @param quantity Quantity of the item.
+	 * @param price Price of the item.
+	 * @param total Total price of that particular item.
 	 */
-	public void printSeperatorLine() {
-		System.out.println("--------------------------------------------------" + "-----------------------------");
-	}
-
 	public void printInfoLine(String name, int quantity, double price, double total) {
 		System.out.printf("%-30s%10d%10.2f%10.2f\n", name, quantity, price, total);		
 	}
@@ -75,7 +77,7 @@ public class Invoice {
 	 * Helper function to print a title line for the receipt.
 	 */
 	public void printTitleLine() {
-		System.out.printf("%-30s%10s%10s%10s\n", "Name", "Quantity", "Price", "Total");	
+		System.out.printf("%-30s%10s%10s%10s\n", "Item", "Quantity", "Price", "Total");	
 	}
 
 	/**
