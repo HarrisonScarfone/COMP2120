@@ -47,7 +47,7 @@ public class Invoice {
 	 * Prints the receipt.
 	 */
 	public void printReceipt() {
-		System.out.print("\n\n\nYour bill:\n\n");
+		System.out.print("\n\n\nYour bill:\n");
 		printTitleLine();
 		double subtotal = 0;
 		for (Item item : items) {
@@ -87,7 +87,7 @@ public class Invoice {
 	 */
 	public void printReceiptLine(double subtotal) {
 		System.out.printf("%-50s%10.2f\n", "Subtotal", subtotal);
-		System.out.printf("%-50s%10.2f\n", "6.25% Taxes", subtotal*0.0625);		
+		System.out.printf("%-50s%10.2f\n", "6.25% sales taxes", subtotal*0.0625);		
 		System.out.printf("%-50s%10.2f\n", "Total", subtotal*1.0625);		
 		
 	}

@@ -14,7 +14,7 @@ public class Lab1Main {
 		System.out.println(wordCap("hElLoWORLd"));
 		System.out.println(wordCap("h"));
 		System.out.println(wordCap(""));
-		System.out.println(findKeyWord("This is a test", "TeSt", false));
+		System.out.println(Lab1Main.findKeyWord("This is a test", "TeSt", false));
 		System.out.println(findKeyWord("This is a test", "TeSt", true));
 		System.out.println(findKeyWord("This is a test", "test", false));
 		System.out.println(findKeyWord("", "test", false));

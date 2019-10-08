@@ -1,77 +1,59 @@
 package Lab4;
+import java.time.Year;
 
-public class Employee {
+public class Employee extends Person{
 	
-	public static int lastId = 0;
+	public static int counter = 0;
 	
+	private int year_hired;
 	private int id;
-	private String name;
-	private double hours;
-	private double hourlyRate;
-	private Date dateOfHire;
-	
+	/**
+	 * No parameter constructor.
+	 */
 	public Employee() {
-		this("No Record", 0, 0, new Date());
+		super();
+		this.year_hired =  Year.now().getValue();
+		this.id = ++counter;
 	}
-	
-	public Employee(String name, double hours, double hourlyRate, Date dateOfHire) {
-		//this(name, hours, hourlyRate);
-		id = ++lastId;
-		this.name = name;
-		this.hours = hours;
-		this.hourlyRate = hourlyRate;
-		this.dateOfHire = dateOfHire;
+	/**
+	 * 3 Parameter constructor for an Employee.
+	 * @param name Name of the employee.
+	 * @param age Age of the employee.
+	 * @param year_hired Year the employee was hired.
+	 */
+	public Employee(String name, int age,  int year_hired) {
+		super(name, age);
+		this.year_hired = (year_hired < 3000 && year_hired > 1500) 
+				? year_hired : Year.now().getValue();
+		this.id = ++counter;
 	}
-	
+	/**
+	 * To string method for the employee class.
+	 */
 	public String toString() {
-		return String.format("ID: %d\nName: %s\nHours: %d\nHourly Rate: %d\nDate of Hire: %s\n", 
-				id, name, hours, hourlyRate, dateOfHire.toString());
+		return name + " was hired in " + year_hired + " and is " + age + " years old."
+				+ " Id: " + id;
 	}
-	
-	public String getName() {
-		return name;
+	/**
+	 * Getter for the year hired.
+	 * @return The hiring year.
+	 */
+	public int get_year_hired() {
+		return year_hired;
 	}
-	
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * Setter for the year hired.
+	 * @param new_year_hired The new year hired.
+	 */
+	public void set_year_hired(int new_year_hired) {
+		year_hired = (new_year_hired < 3000 && new_year_hired > 1500) 
+				? new_year_hired : Year.now().getValue();
 	}
-	
-	public double getHours() {
-		return hours;
-	}
-	
-	public void setHours(double hours) {
-		this.hours = hours;
-	}
-	
-	public double getHourlyRate() {
-		return hourlyRate;
-	}
-	
-	public void setHourlyRate(double hourlyRate) {
-		this.hourlyRate = hourlyRate;
-	}
-	
-	public String getDateOfHire() {
-		return dateOfHire.toString();
-	}
-	
-	public void setDateOfHire(int day, int month, int year) {
-		try {
-			dateOfHire = new Date(day, month, year);
-		}catch(Exception e) {
-			e.getMessage();
-		}
-	}	
-	
-	public double calculatePay() {
-		return hours*hourlyRate;
-	}
-	
-	public boolean isValidName(String name) {
-		if (name.isEmpty()){
-			return false;
-		}
-		return true;
+	/**
+	 * Getter for the id.
+	 * @return The employee id.
+	 */
+	public int getId() {
+		return id;
 	}
 }
