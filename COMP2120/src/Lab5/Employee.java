@@ -1,7 +1,7 @@
 package Lab5;
 import java.time.Year;
 
-public class Employee extends Person{
+abstract class Employee extends Person{
 	
 	public static int counter = 0;
 	

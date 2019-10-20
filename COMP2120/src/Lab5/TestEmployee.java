@@ -5,14 +5,14 @@ import java.util.Random;
 
 public class TestEmployee extends Names{
 	
-	public static ArrayList<HourlyWorker> hourlyWorkers = new ArrayList<HourlyWorker>();
+	public final static ArrayList<HourlyWorker> hourlyWorkers = new ArrayList<HourlyWorker>();
 	private final static Random random = new Random();
 	/**
 	 * Driver function for Lab 4.
 	 * @param args Command line arguments for program.
 	 */
 	public static void main(String[] args) {
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<1000000; i++) {
 			HourlyWorker newWorker = new HourlyWorker(
 					names[random.nextInt(10)],
 					random.nextInt(47) + 18,

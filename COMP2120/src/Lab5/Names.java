@@ -1,6 +1,6 @@
 package Lab5;
 
-public class Names {
+abstract class Names {
 	
 	public static String[] names = {
 			"Liam", 
