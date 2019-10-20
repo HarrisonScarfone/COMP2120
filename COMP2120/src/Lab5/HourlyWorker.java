@@ -17,6 +17,10 @@ public class HourlyWorker extends Employee{
 		this.hourly_rate = hourly_rate;
 	}
 	
+	public String toString() {
+		return "" + getName() +  "," + getId() + "," + getAge() + "," + get_year_hired() + "," + num_hours + "," + hourly_rate;
+	}
+	
 	public int getNumHours() {
 		return num_hours;
 	}

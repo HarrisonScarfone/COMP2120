@@ -12,9 +12,9 @@ public class TestEmployee extends Names{
 	 * @param args Command line arguments for program.
 	 */
 	public static void main(String[] args) {
-		for(int i=0; i<1000000; i++) {
+		for(int i=0; i<5; i++) {
 			HourlyWorker newWorker = new HourlyWorker(
-					names[random.nextInt(10)],
+					names[random.nextInt(names.length)],
 					random.nextInt(47) + 18,
 					random.nextInt(1500) + 1500,
 					random.nextInt(100),
@@ -25,6 +25,7 @@ public class TestEmployee extends Names{
 		
 		for(HourlyWorker hw: hourlyWorkers) {
 			hw.payWorker();
+			System.out.println(hw);
 		}
 	}
 }
