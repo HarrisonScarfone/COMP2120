@@ -12,8 +12,9 @@ public class Lab3Main {
 		System.out.println(weather1);
 		Weather weather2 = new Weather(13, 17);
 		System.out.println(weather2);
-		Weather weather3 = new Weather(0, 60);
-		System.out.println(weather3);		
+		weather2.set_tempF(0);
+		weather2.set_windSpeed(40);
+		System.out.println(weather2);
 	}
 }
 
@@ -24,5 +25,5 @@ public class Lab3Main {
 */
 
 /*The no argument constructor is provided by default when
- the variables are given default values in the class */
+ the class parameters are given default values in the class */
  
