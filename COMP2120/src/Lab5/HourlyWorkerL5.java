@@ -1,6 +1,6 @@
 package Lab5;
 
-public class HourlyWorker extends Employee{
+public class HourlyWorkerL5 extends EmployeeL5{
 	
 	private int num_hours;
 	private double hourly_rate;
@@ -8,7 +8,7 @@ public class HourlyWorker extends Employee{
 	/**
 	 * No argument constructor
 	 */
-	public HourlyWorker() {
+	public HourlyWorkerL5() {
 		super();
 		this.num_hours = 0;
 		this.hourly_rate = 0.0;
@@ -21,7 +21,7 @@ public class HourlyWorker extends Employee{
 	 * @param num_hours The number of hours worked as an int
 	 * @param hourly_rate The hourly rate of pay as a duble
 	 */
-	public HourlyWorker(String name, int age, int year_hired, int num_hours, double hourly_rate) {
+	public HourlyWorkerL5(String name, int age, int year_hired, int num_hours, double hourly_rate) {
 		super(name, age, year_hired);
 		this.num_hours = num_hours;
 		this.hourly_rate = hourly_rate;
@@ -75,7 +75,13 @@ public class HourlyWorker extends Employee{
 	 * Function to display worker pay as requested in the lab
 	 */
 	public void payWorker() {
-		System.out.printf("%s is an employee who gets paid $%.2f this week.\n", getName(), getTotalPay());
+		if(num_hours > 0) {
+			System.out.printf("%s is an employee who gets paid $%.2f this week.\n", getName(), getTotalPay());
+			num_hours = 0;
+		}else {
+			System.out.printf("%s has already been paid this week and must work more hours.\n", getName());
+		}
+		
 	}
 	/**
 	 * Validate number is >0

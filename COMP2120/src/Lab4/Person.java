@@ -1,6 +1,7 @@
 package Lab4;
 
-public class Person {
+abstract class Person {
+	
 	protected String name;
 	protected int age;
 	/**

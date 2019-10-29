@@ -1,7 +1,7 @@
 package Lab5;
 import java.time.Year;
 
-abstract class Employee extends Person{
+abstract class EmployeeL5 extends PersonL5{
 	
 	public static int counter = 0;
 	
@@ -10,7 +10,7 @@ abstract class Employee extends Person{
 	/**
 	 * No parameter constructor.
 	 */
-	public Employee() {
+	public EmployeeL5() {
 		super();
 		this.year_hired =  Year.now().getValue();
 		this.id = ++counter;
@@ -21,7 +21,7 @@ abstract class Employee extends Person{
 	 * @param age Age of the employee.
 	 * @param year_hired Year the employee was hired.
 	 */
-	public Employee(String name, int age,  int year_hired) {
+	public EmployeeL5(String name, int age,  int year_hired) {
 		super(name, age);
 		this.year_hired = (year_hired < 3000 && year_hired > 1500) 
 				? year_hired : Year.now().getValue();

@@ -6,7 +6,7 @@ public class Employee extends Person{
 	public static int counter = 0;
 	
 	private int year_hired;
-	private int id;
+	private final int id;
 	/**
 	 * No parameter constructor.
 	 */

@@ -1,13 +1,13 @@
 package Lab5;
 
-abstract class Person {
+abstract class PersonL5 {
 	protected String name;
 	protected int age;
 	/**
 	 * No argument constructor. Default values private contractor for
 	 * name and age 18.
 	 */
-	public Person() {	
+	public PersonL5() {	
 		this("private contractor", 18);
 	}
 	/**
@@ -15,7 +15,7 @@ abstract class Person {
 	 * @param name Name of the person.
 	 * @param age Age of the person.
 	 */
-	public Person(String name, int age) {
+	public PersonL5(String name, int age) {
 		this.age = (age < 151 && age > 1) ? age: 18;
 		this.name = name.isEmpty() ? "private contractor" : name;
 	}
