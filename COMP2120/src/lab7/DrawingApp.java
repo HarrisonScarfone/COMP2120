@@ -1,6 +1,7 @@
-package lab6;
+package lab7;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class DrawingApp {
@@ -37,6 +38,8 @@ public class DrawingApp {
 		
 		ShapeTypes.getRandomShapes(10);
 		double totalArea = 0;
+		
+		Collections.sort(shapes);
 		
 		
 		for(Shape s: shapes) {
