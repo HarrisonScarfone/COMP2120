@@ -1,0 +1,39 @@
+package lab6;
+
+public class Rectangle extends Shape{
+	
+	private double width;
+	private double length;
+	
+	public Rectangle(double width, double length) {
+		super();
+		setLabel("rectangle");
+		this.width = width;
+		this.length = length;
+	}
+	
+	public double getWidth() {
+		return width;
+	}
+	
+	public void setWidth(double newWidth) {
+		if(newWidth > 0.0) {
+			width = newWidth;
+		}
+	}
+	
+	public double getLength() {
+		return length;
+	}
+	
+	public void setLength(double newLength) {
+		if(newLength > 0.0) {
+			length = newLength;
+		}
+	}
+	
+	@Override
+	public double calculateArea() {
+		return width*length;
+	}
+}

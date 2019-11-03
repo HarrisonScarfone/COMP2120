@@ -1,4 +1,4 @@
-package Lab1;
+package lab1;
 /**
  * Lab 1 Assignment.  Accomplishes 3 tasks as described 
  * in the lab handout and this javadoc.

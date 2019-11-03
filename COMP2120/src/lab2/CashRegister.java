@@ -1,4 +1,4 @@
-package Lab2;
+package lab2;
 
 /**
  * Lab 2 Assignment.  Reads in 3 Item, stores in ArrayList.

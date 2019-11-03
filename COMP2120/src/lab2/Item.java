@@ -1,4 +1,4 @@
-package Lab2;
+package lab2;
 /**
  * 
  * @author Harrison Scarfone 104900846

@@ -1,16 +1,16 @@
-package Lab5;
+package lab4;
 import java.time.Year;
 
-abstract class EmployeeL5 extends PersonL5{
+public class Employee extends Person{
 	
 	public static int counter = 0;
 	
-	protected int year_hired;
-	protected int id;
+	private int year_hired;
+	private final int id;
 	/**
 	 * No parameter constructor.
 	 */
-	public EmployeeL5() {
+	public Employee() {
 		super();
 		this.year_hired =  Year.now().getValue();
 		this.id = ++counter;
@@ -21,7 +21,7 @@ abstract class EmployeeL5 extends PersonL5{
 	 * @param age Age of the employee.
 	 * @param year_hired Year the employee was hired.
 	 */
-	public EmployeeL5(String name, int age,  int year_hired) {
+	public Employee(String name, int age,  int year_hired) {
 		super(name, age);
 		this.year_hired = (year_hired < 3000 && year_hired > 1500) 
 				? year_hired : Year.now().getValue();
@@ -55,9 +55,5 @@ abstract class EmployeeL5 extends PersonL5{
 	 */
 	public int getId() {
 		return id;
-	}
-	
-	protected void payWorker() {
-		System.out.println("" + getName() + " is an employee who needs to be paid.");
 	}
 }

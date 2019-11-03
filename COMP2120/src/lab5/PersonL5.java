@@ -1,4 +1,4 @@
-package Lab5;
+package lab5;
 
 abstract class PersonL5 {
 	protected String name;
