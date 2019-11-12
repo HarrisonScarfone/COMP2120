@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DrawingApp {
-
+	
 	public static ArrayList<Shape> shapes = new ArrayList<Shape>();
 	
+/**
+ * 
+ * @author harry
+ *
+ */
 	enum ShapeTypes{
 		
 		circle, rectangle, triangle;
@@ -33,6 +38,10 @@ public class DrawingApp {
 		}
 	}
 	
+	/**
+	 * Driver function for labe
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		ShapeTypes.getRandomShapes(10);

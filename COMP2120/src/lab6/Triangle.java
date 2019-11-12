@@ -8,8 +8,8 @@ public class Triangle extends Shape{
 	public Triangle(double base, double height) {
 		super();
 		setLabel("triangle");
-		this.base = base;
-		this.height = height;
+		setBase(base);
+		setHeight(height);
 	}
 	
 	public double getBase() {
@@ -17,8 +17,10 @@ public class Triangle extends Shape{
 	}
 	
 	public void setBase(double newBase) {
-		if(newBase > 0) {
+		if(newBase > 0.0) {
 			base = newBase;
+		}else {
+			base = 1.0;
 		}
 	}
 	
@@ -27,8 +29,10 @@ public class Triangle extends Shape{
 	}
 	
 	public void setHeight(double newHeight) {
-		if(newHeight > 0) {
+		if(newHeight > 0.0) {
 			height = newHeight;
+		}else {
+			height = 1.0;
 		}
 	}
 

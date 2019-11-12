@@ -4,8 +4,6 @@ public class Rectangle extends Shape{
 	
 	private double width;
 	private double length;
-	private double area;
-	
 	
 	public Rectangle(double width, double length) {
 		super();
