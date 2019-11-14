@@ -2,6 +2,7 @@ package assignment2;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 abstract class Item implements Serializable{
 	
 	public static int counter = 0;	

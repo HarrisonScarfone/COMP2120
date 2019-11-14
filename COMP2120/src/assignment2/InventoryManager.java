@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+
 @SuppressWarnings("serial")
 public class InventoryManager implements Serializable{
 	
@@ -18,10 +19,53 @@ public class InventoryManager implements Serializable{
 	
 	public InventoryManager() {
 		InventoryManager.inventory = new LinkedList<Item>();
-		//this.scanner = new Scanner(System.in);		
+		//this.scanner = new Scanner(System.in);	
 	}
 	
 	public void runInventoryManager() {
+		int choice;
+		do{
+			displayMenu();
+			choice = getChoiceInput();
+			handleMenuInput(choice);
+		}while(choice != 8);
+	}
+	
+	public void handleMenuInput(int choice) {
+		switch(choice) {
+		case 1:
+			addItem();
+			break;
+		case 2:
+			displayAll();
+			break;
+		case 3:
+			showBooksByAuthor();
+			break;
+		case 4:
+			showGiftsByLabel();
+			runInventoryManager();
+			break;
+		case 5:
+			showShoesBySize();
+			break;
+		case 6:
+			deleteItemById();
+			break;
+		case 7:
+			purchaseItem();
+			break;
+		case 8:
+			System.out.println("Saving and exiting.");
+			saveLinkedList();
+			System.exit(0);
+			break;
+		default:
+			System.out.println("Invadid option.");	
+		}
+	}
+	
+	public void displayMenu() {
 		System.out.println("==========================");
 		System.out.println("Inventory Control System");
 		System.out.println("==========================");
@@ -34,44 +78,6 @@ public class InventoryManager implements Serializable{
 		System.out.println("7. Purchase Item by ID");
 		System.out.println("8. Exit and Save");
 		System.out.println("==========================");
-		int choice = getChoiceInput();
-		switch(choice) {
-		case 1:
-			addItem();
-			runInventoryManager();
-			break;
-		case 2:
-			displayAll();
-			runInventoryManager();
-			break;
-		case 3:
-			showBooksByAuthor();
-			runInventoryManager();
-			break;
-		case 4:
-			showGiftsByLabel();
-			runInventoryManager();
-			break;
-		case 5:
-			showShoesBySize();
-			runInventoryManager();
-			break;
-		case 6:
-			deleteItemById();
-			runInventoryManager();
-			break;
-		case 7:
-			purchaseItem();
-			runInventoryManager();
-			break;
-		case 8:
-			System.out.println("Saving and exiting.");
-			saveLinkedList();
-			break;
-		default:
-			System.out.println("Invadid option.");
-			runInventoryManager();		
-		}
 	}
 	
 	public void saveLinkedList() {
@@ -90,8 +96,8 @@ public class InventoryManager implements Serializable{
 	        } 
 	}
 	
-	@SuppressWarnings("unchecked")
 	//will always be a java standard linked list
+	@SuppressWarnings("unchecked")
 	public void loadLinkedList() {
 	     try {
 	         FileInputStream file = new FileInputStream(filename); 
@@ -126,9 +132,7 @@ public class InventoryManager implements Serializable{
 		default:
 			System.out.println("Invalid choice.");
 			addItem();
-		}	
-
-			
+		}				
 	}
 	//System.out.println("" + price + "," + quantity + ',' + title + "," + author + "," + year);
 	public void addBook() {
@@ -262,7 +266,7 @@ public class InventoryManager implements Serializable{
 	public void showBooksByAuthor() {
 		LinkedList<Book> books = new LinkedList<Book>();
 		for(Item i: inventory) {
-			if(i.classification == "Book") {
+			if(i.classification.equals("Book")) {
 				books.add((Book) i);
 			}
 		}
@@ -278,7 +282,7 @@ public class InventoryManager implements Serializable{
 	public void showGiftsByLabel() {
 		LinkedList<GiftCard> giftCards = new LinkedList<GiftCard>();
 		for(Item i: inventory) {
-			if(i.classification == "Gift Card") {
+			if(i.classification.equals("Gift Card")) {
 				giftCards.add((GiftCard) i);
 			}
 		}
@@ -294,7 +298,7 @@ public class InventoryManager implements Serializable{
 	public void showShoesBySize() {
 		LinkedList<Shoe> shoes = new LinkedList<Shoe>();
 		for(Item i: inventory) {
-			if(i.classification == "Shoe") {
+			if(i.classification.equals("Shoe")) {
 				shoes.add((Shoe) i);
 			}
 		}
