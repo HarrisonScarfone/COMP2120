@@ -1,5 +1,11 @@
 package assignment2;
 
+/*
+ * By: Harrison Scarfone
+ * Student Number: 104900846
+ * This program is an inventory manager written for assignment 2
+ */
+
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +18,7 @@ public class Main {
 		System.out.println("Inventory Control System");
 		System.out.println("==========================");
 		System.out.println("1. Load Inventory Manager");
-		System.out.println("2. New Inventory Manager (Will be saved to disk)");
+		System.out.println("2. New Inventory Manager");
 		System.out.println("==========================");
 		switch(getChoiceInput()) {
 		case 1:

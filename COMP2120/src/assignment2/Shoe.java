@@ -2,6 +2,7 @@ package assignment2;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Shoe extends Item implements Serializable{
 	
 	public final static String identifier = "Shoe";

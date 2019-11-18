@@ -16,4 +16,9 @@ class TicTacToe {
 
 public class TicTacToe {
 
+	public static void main(String[] args) {
+		Game newGame = new Game();
+		newGame.start();
+	}
+	
 }

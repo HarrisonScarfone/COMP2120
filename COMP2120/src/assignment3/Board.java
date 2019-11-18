@@ -1,36 +1,34 @@
 package assignment3;
 
-//- board.java a board has or contains 9 blocks in a 2D array (3x3) that shapes the game space of tic-tac-toe. 
-//It also maintains an internal state which can be one of the following: 
-//EMPTY (the initial state of the board), X (X claims a win), Y (Y claims a win), 
-//or DRAW (where neither X nor Y can claim a win and no further moves are possible). 
-//The board has the key methods makeMove( ) that is called by a player making a move and 
-//getState() or updateState() that updates the state of the board after 
-//every move. It checks for a win or a draw when they occur. Note that the board instantiates and maintains all the blocks.
+import java.util.ArrayList;
+import java.util.Stack;
+
+import assignment3.Player.Symbol;
+import test.Move;
 
 public class Board {
 	
-	public static void main(String[] args) {
-		Board b = new Board();
-		b.draw();
-		
-	}
-	
 	public Block[] blocks = new Block[9];
 	public State state;
+	public ArrayList<Integer> availableMoves;
+	public Stack<Move> moveHistory = new Stack<Move>();
 	
 	public enum State{
-		EMPTY, X_WIN, Y_WIN, DRAW
+		EMPTY, X_WIN, O_WIN, DRAW
 	}
 	
-	public int[][] winningCombinations = new int[][]{{1,4,7}, {2,5,8},{3,6,9},{1,2,3},
-			{4,5,6},{7,8,9},{1,5,9},{3,5,7}};
+	public int[][] winningCombinations = new int[][]{{0,3,6}, {1,4,7},{2,5,8},{0,1,2},
+			{3,4,5},{6,7,8},{0,4,8},{2,4,6}};
 	
 	public Board() {
 		for(int i=0; i<9; i++) {
 			blocks[i] = new Block();
 		}
 		state = Board.State.EMPTY;
+		availableMoves = new ArrayList<Integer>();
+		for(int i=1; i<10; i++) {
+			availableMoves.add(i);
+		}
 	}
 	
 	public void draw() {
@@ -55,11 +53,71 @@ public class Board {
 		}
 	}
 	
-//	public void updateState() {
-//		for(int[] combo: winningCombinations) {
-//				if(blocks[combo[0]].getState().equals(blocks[combo[1]]))
-//			}
-//		}
-//	}
-//	
+	public boolean isEmpty() {
+		for(Block b: blocks) {
+			if(!b.getState().equals(Block.State.EMPTY)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public int[] getBoardState(Block.State xOrO) {
+		int[] return_ = new int[9];
+		for(int i=0; i<9; i++) {
+			if(blocks[i].getState().equals(xOrO)) {
+				return_[i] = 1;
+			}else if(blocks[i].getState().equals(Block.State.EMPTY)){
+				return_[i] = 0;
+			}else {
+				return_[i] = -1;
+			}
+		}
+		return return_;
+	}
+	
+	public void updateState() {
+		for(int[] combo: winningCombinations) {
+			if(blocks[combo[0]].getState().equals(blocks[combo[1]].getState()) &&
+					blocks[combo[1]].getState().equals(blocks[combo[2]].getState())){	
+				if(blocks[combo[0]].getState().equals(Block.State.X)) {
+					state = Board.State.X_WIN;
+					return;
+				}
+				if(blocks[combo[0]].getState().equals(Block.State.O)) {
+					state = Board.State.O_WIN;
+					return;
+				}
+			}
+		}
+		if(availableMoves.size() == 0) {
+			state = Board.State.DRAW;
+		}
+	}
+	
+	public void makeMove(int location, Symbol p) {
+		if(p.equals(Player.Symbol.X)) {
+			blocks[location].setState(Block.State.X);
+			updateAvailableMoves(location);
+			moveHistory.push(new Move(true, location));
+			return;
+		}else {
+			blocks[location].setState(Block.State.O);
+			updateAvailableMoves(location);
+			moveHistory.push(new Move(false, location));
+			return;
+		}
+	}
+		
+	public void updateAvailableMoves(int locationToRemove) {
+		for(int i = 0; i<availableMoves.size(); i++) {
+			if(availableMoves.get(i).equals(locationToRemove+1)) {
+				availableMoves.remove(i);
+			}
+		}
+	}
 }
+
+//X | X | O
+//X | O | O
+//O | O | X

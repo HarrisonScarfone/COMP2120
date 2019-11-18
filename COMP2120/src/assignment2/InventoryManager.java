@@ -26,7 +26,7 @@ public class InventoryManager implements Serializable{
 		int choice;
 		do{
 			displayMenu();
-			choice = getChoiceInput();
+			choice = getInt("choice");
 			handleMenuInput(choice);
 		}while(choice != 8);
 	}
@@ -136,19 +136,19 @@ public class InventoryManager implements Serializable{
 	}
 	//System.out.println("" + price + "," + quantity + ',' + title + "," + author + "," + year);
 	public void addBook() {
-		double price = getPriceInput();
-		int quantity = getQuantityInput();
+		double price = getDouble("price");
+		int quantity = getInt("quantity");
 		System.out.printf("Enter the book title: ");
 		String title = scanner.nextLine();
 		System.out.printf("Enter the author: ");
 		String author = scanner.nextLine();
-		int year = getYearInput();
+		int year = getInt("year");
 		inventory.add(new Book(price, quantity, author, title, year));
 	}
 	
 	public void addGiftCard() {
-		double price = getPriceInput();
-		int quantity = getQuantityInput();
+		double price = getDouble("price");
+		int quantity = getInt("quantity");
 		System.out.printf("Enter label: ");
 		String label = scanner.nextLine();
 		System.out.printf("Enter manufacturer: ");
@@ -157,102 +157,36 @@ public class InventoryManager implements Serializable{
 	}
 	
 	public void addShoe() {
-		double price = getPriceInput();
-		int quantity = getQuantityInput();
+		double price = getDouble("price");
+		int quantity = getInt("quantity");
 		System.out.println("Color options are: white, silver, red, beige, brown, blue, black, pink");
 		System.out.printf("Enter the color: ");
 		String color = scanner.nextLine();
-		double size = getSizeInput();
+		double size = getInt("size");
 		inventory.add(new Shoe(price, quantity, color, size));
 	}
 	
-	public double getPriceInput() {
-		System.out.printf("Enter price: ");
+	public double getDouble(String type) {
+		System.out.printf("Enter %s: ", type);
 		String input = scanner.nextLine();
 		try {
 			return Double.parseDouble(input);
 		}catch(Exception e){
-			System.out.println("Invalid price. Try again.");
-			return getPriceInput();
+			System.out.printf("Invalid %s. Try again.\n", type);
+			return getDouble(type);
 		}
 	}
 	
-	public double getSizeInput() {
-		System.out.printf("Enter size: ");
-		String input = scanner.nextLine();
-		try {
-			return Double.parseDouble(input);
-		}catch(Exception e){
-			System.out.println("Invalid size. Try again.");
-			return getSizeInput();
-		}
-	}
-	
-	public int getQuantityInput() {
-		System.out.printf("Enter quantity: ");
+	public int getInt(String type) {
+		System.out.printf("Enter %s: ", type);
 		String input = scanner.nextLine();
 		try {
 			return Integer.parseInt(input);
 		}catch(Exception e){
-			System.out.println("Invalid quantity. Try again.");
-			return getQuantityInput();
+			System.out.printf("Invalid %s. Try again.\n", type);
+			return getInt(type);
 		}
-	}
-	
-	public int getYearInput() {
-		System.out.printf("Enter year: ");
-		String input = scanner.nextLine();
-		try {
-			return Integer.parseInt(input);
-		}catch(Exception e){
-			System.out.println("Invalid year. Try again.");
-			return getYearInput();
-		}
-	}
-	
-	public int getChoiceInput() {
-		System.out.printf("Enter choice number: ");
-		String input = scanner.nextLine();
-		try {
-			return Integer.parseInt(input);
-		}catch(Exception e){
-			System.out.println("Invalid choice. Try again.");
-			return getChoiceInput();
-		}
-	}
-	
-	public int getDeleteIdInput() {
-		System.out.printf("Enter id to delete: ");
-		String input = scanner.nextLine();
-		try {
-			return Integer.parseInt(input);
-		}catch(Exception e){
-			System.out.println("Invalid id. Try again.");
-			return getDeleteIdInput();
-		}
-	}
-	
-	public int getPurchaseIdInput() {
-		System.out.printf("Enter id to purchase: ");
-		String input = scanner.nextLine();
-		try {
-			return Integer.parseInt(input);
-		}catch(Exception e){
-			System.out.println("Invalid id. Try again.");
-			return getPurchaseIdInput();
-		}
-	}
-	
-	public int getPurchaseQuantityInput() {
-		System.out.printf("Enter quantity to purchase: ");
-		String input = scanner.nextLine();
-		try {
-			return Integer.parseInt(input);
-		}catch(Exception e){
-			System.out.println("Invalid quantity. Try again.");
-			return getPurchaseQuantityInput();
-		}
-	}
+	}	
 	
 	public void displayAll() {
 		System.out.println("Inventory Contents: ");
@@ -313,7 +247,7 @@ public class InventoryManager implements Serializable{
 	
 	public void deleteItemById() {
 		System.out.printf("Enter the id of the item to delete: ");
-		int deleteId = getDeleteIdInput();
+		int deleteId = getInt("id");
 		for(int i=0; i<inventory.size(); i++) {
 			if(inventory.get(i).id == deleteId) {
 				inventory.remove(i);
@@ -324,8 +258,8 @@ public class InventoryManager implements Serializable{
 	}
 	
 	public void purchaseItem() {
-		int purchaseId = getPurchaseIdInput();
-		int purchaseQuantity = getPurchaseQuantityInput();
+		int purchaseId = getInt("id");
+		int purchaseQuantity = getInt("purchase quantity");
 		for(int i=0; i<inventory.size(); i++) {
 			if(inventory.get(i).id == purchaseId) {
 				inventory.get(i).purchase(purchaseQuantity);
