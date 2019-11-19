@@ -189,7 +189,7 @@ public class MainWindow {
 		JButton btnNewButton = new JButton("Generate Random");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for(int i=0; i<100000; i++) {
+				for(int i=0; i<1000; i++) {
 					int month = (int) (Math.random()*11 + 1);
 					int day = (int) (Math.random()*30 + 1);
 					int year = (int) (Math.random()*69 + 1950);
