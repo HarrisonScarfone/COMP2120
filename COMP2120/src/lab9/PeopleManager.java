@@ -48,7 +48,7 @@ public class PeopleManager {
 			String nextLine;
 			
 			File inFile = new File(filepath);
-			String pattern = "(.+),(.+),(.+)/(.+)/(.+)";
+			String pattern = "(.+),(.+),(.+)-(.+)-(.+)";
 			Pattern p = Pattern.compile(pattern);
 			Matcher m;
 			
@@ -64,12 +64,12 @@ public class PeopleManager {
 				nextLine = scanner.nextLine();
 				m = p.matcher(nextLine);
 				if(m.find()) {
-					String fn = m.group(1);
-					String ln = m.group(2);
+					String ln = m.group(1);
+					String fn = m.group(2);
 					String month = m.group(3);
 					String day = m.group(4);
 					String year = m.group(5);
-					people.add(new Person(fn, ln, month, day, year));
+					people.add(new Person(ln, fn, month, day, year));
 				}else {			
 					System.out.println("couldnt add a person");
 				}

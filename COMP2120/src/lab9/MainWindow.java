@@ -64,7 +64,7 @@ public class MainWindow {
 		scrollPane.setBounds(363, 12, 304, 595);
 		frame.getContentPane().add(scrollPane);
 		
-		String[] columns = {"First Name", "Last Name", "Date of Birth"};
+		String[] columns = {"Last Name", "First Name", "Date of Birth"};
 		
 		tableModel = new DefaultTableModel(columns, 0);
 		
@@ -120,7 +120,7 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				peopleManager.addPerson(new Person(txtFirstName.getText(), txtLastName.getText(), 
 						txtMonth.getText(), txtDay.getText(), txtYear.getText()));
-				Object[] addThis = {txtFirstName.getText(), txtLastName.getText(), txtMonth.getText() 
+				Object[] addThis = {txtLastName.getText(), txtFirstName.getText(), txtMonth.getText() 
 						+ "-" + txtDay.getText() + "-" + txtYear.getText()};
 				tableModel.addRow(addThis);
 				tableModel.fireTableDataChanged();
@@ -189,13 +189,13 @@ public class MainWindow {
 		JButton btnNewButton = new JButton("Generate Random");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for(int i=0; i<100; i++) {
+				for(int i=0; i<100000; i++) {
 					int month = (int) (Math.random()*11 + 1);
 					int day = (int) (Math.random()*30 + 1);
-					int year = (int) (Math.random()*2019 + 1950);
+					int year = (int) (Math.random()*69 + 1950);
 					peopleManager.addPerson(new Person(
-							Names.names[(int)(Math.random()*Names.names.length)],
-							Names.names[(int)(Math.random()*Names.names.length)],
+							Names.lastNames[(int)(Math.random()*Names.lastNames.length)],
+							Names.firstNames[(int)(Math.random()*Names.firstNames.length)],
 							"" + month,
 							"" + day,
 							"" + year));

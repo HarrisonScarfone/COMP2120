@@ -17,7 +17,7 @@ public class Person {
 	}
 	
 	public String toString() {
-		return "" + lastName + "," + firstName + "," + birthMonth + "/" + birthDay + "/" + birthYear;
+		return "" + lastName + "," + firstName + "," + birthMonth + "-" + birthDay + "-" + birthYear;
 	}
 	
 	public String getLastName() {
